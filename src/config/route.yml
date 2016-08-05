@@ -1,0 +1,5 @@
+#route config
+home:
+    decorator: ['Decorator\JsonDecorator','Decorator\LoginDecorator','Decorator\TemplateDecorator']
+default: ['hello default']
+
