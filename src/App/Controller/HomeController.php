@@ -2,11 +2,13 @@
 namespace App\Controller;
 
 use lib\BaseController;
+use lib\modelFactory;
 
 Class HomeController extends BaseController
 {
     public function index()
     {
-        return ['userid'=>1, 'username'=>'mawen'];
+        $res = modelFactory::getMode('user')->getUsers();
+        return ['res'=>$res];
     }
 }

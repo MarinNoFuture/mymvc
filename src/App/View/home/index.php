@@ -1,3 +1,2 @@
 <?php
-echo $userid."<br>";
-echo $username;
+print_r($res);
