@@ -1,8 +1,8 @@
 <?php
 namespace lib\Decorator;
-use lib\Decorator\Decorator;
+use lib\BaseDecorator;
 
-class LoginDecorator implements Decorator
+class LoginDecorator implements BaseDecorator
 {
     public function before($controller = '')
     {

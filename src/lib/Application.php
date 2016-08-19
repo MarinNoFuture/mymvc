@@ -30,20 +30,20 @@ class Application
 
     public function dispatch()
     {
-        $uri_arr = explode('/', trim($_SERVER['SCRIPT_NAME'], '/'));
+        $uri_arr = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
         if(count($uri_arr) == 1)
         {
             list($c, $v) = ['home','index'];
         }elseif(count($uri_arr) == 2){
             list($c, $v) = $uri_arr;
         }
-        $c_low = strtolower($c);
         $c = ucwords($c);
-        $obj = new Controller\HomeController($c, $v);
+        $controller = 'App\\Controller\\'.$c.'Controller';
+        $obj = new $controller($c, $v);
         $decorators = [];
-        if (isset($this->config[$c_low]['decorator']))
+        if (isset($this->config[strtolower($c)]['decorator']))
         {
-            $conf_decorator = $this->config[$c_low]['decorator'];
+            $conf_decorator = $this->config[strtolower($c)]['decorator'];
             foreach ($conf_decorator as $value)
             {
                 $whole_ns_name = 'lib\\'.$value;
@@ -54,6 +54,7 @@ class Application
         {
             $decorator->before($obj);
         }
+//        $v = explode(".",$v)[0];
         $return_value = $obj->$v();
         foreach ($decorators as $decorator)
         {

@@ -4,10 +4,15 @@ namespace lib;
 
 class modelFactory
 {
+    protected static $instance;
+
     static function getMode($modelName)
     {
-        $modelClass = 'App\\Model\\'.ucwords($modelName).'Model';
-        $model = new $modelClass;
-        return $model;
+        if(empty(self::$instance))
+        {
+            $modelClass = 'App\\Model\\'.ucwords($modelName).'Model';
+            self::$instance = new $modelClass;
+        }
+        return self::$instance;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 namespace lib\Decorator;
-use lib\Decorator\Decorator;
+use lib\BaseDecorator;
 
-class TemplateDecorator implements Decorator
+class TemplateDecorator implements BaseDecorator
 {
     /**
      * @var \lib\BaseController
@@ -17,11 +17,14 @@ class TemplateDecorator implements Decorator
     {
         if (!isset($_GET['format']) || empty($_GET['format']))
         {
-            foreach ($return_value as $k => $v)
+            if(!empty($return_value))
             {
-                $this->controller->assign($k, $v);
+                foreach ($return_value as $k => $v)
+                {
+                    $this->controller->assign($k, $v);
+                }
+                $this->controller->display();
             }
-            $this->controller->display();
         }
     }
 }

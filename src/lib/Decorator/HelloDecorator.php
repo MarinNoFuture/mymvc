@@ -6,9 +6,9 @@
  * Time: 3:30 PM
  */
 namespace lib\Decorator;
-use lib\Decorator\Decorator;
+use lib\BaseDecorator;
 
-class HelloDecorator implements Decorator
+class HelloDecorator implements BaseDecorator
 {
     protected $name;
 

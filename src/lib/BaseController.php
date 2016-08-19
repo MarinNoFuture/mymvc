@@ -28,7 +28,10 @@ abstract class BaseController
         }
         $path = $_SERVER['DOCUMENT_ROOT'].'/src/App/View/'.$file;
         extract($this->data);
-        include_once $path;
+        if(is_file($path))
+        {
+            include_once $path;
+        }
     }
 
 }

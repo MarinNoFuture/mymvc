@@ -17,4 +17,9 @@ abstract class BaseModel
         $this->model = Db::factory();
         $this->model->connect($param['host'], $param['user'], $param['password'], 'connectmonkey');
     }
+
+    function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+    }
 }

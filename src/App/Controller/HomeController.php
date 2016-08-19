@@ -11,4 +11,8 @@ Class HomeController extends BaseController
         $res = modelFactory::getMode('user')->getUsers();
         return ['res'=>$res];
     }
+    public function goodbye()
+    {
+        print_r(['goodbye']);
+    }
 }
