@@ -1,6 +1,7 @@
 <?php
 namespace lib;
 use App\Controller;
+use lib\BaseLog;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
 
@@ -18,6 +19,7 @@ class Application
         } catch (ParseException $e) {
             printf("Unable to parse the YAML string: %s", $e->getMessage());
         }
+        BaseLog::init();
     }
     static function getInstance($base_dir = '')
     {
@@ -30,12 +32,27 @@ class Application
 
     public function dispatch()
     {
+        //写入日志测试log类
+        BaseLog::log('mawen');
         $uri_arr = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
         if(count($uri_arr) == 1)
         {
             list($c, $v) = ['home','index'];
-        }elseif(count($uri_arr) == 2){
-            list($c, $v) = $uri_arr;
+        }else{
+            $c = $uri_arr[0];
+            $v = $uri_arr[1];
+            array_shift($uri_arr);
+            array_shift($uri_arr);
+            $param_count = count($uri_arr);
+            if( !empty($param_count) )
+            {
+                for ($i=0; $i < $param_count; $i=$i+2) { 
+                    if( isset($uri_arr[$i+1]) )
+                    {
+                        $_GET[$uri_arr[$i]] = $uri_arr[$i+1];    
+                    }
+                }
+            }
         }
         $c = ucwords($c);
         $controller = 'App\\Controller\\'.$c.'Controller';

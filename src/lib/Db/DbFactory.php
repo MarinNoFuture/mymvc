@@ -10,7 +10,7 @@ namespace lib\Db;
 abstract class DbFactory
 {
     protected static $db;
-    abstract public static function getInstance();
+    // abstract public static function getInstance();
     abstract public function connect($host, $user, $passwd, $dbname);
     abstract public function query($sql);
     abstract public function close();

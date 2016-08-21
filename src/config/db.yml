@@ -1,4 +1,7 @@
-#sdk config
+#db config
+drive: pdo
 host: localhost
 user: root
 password: 111111
+database: mymvc
+charset: utf8
