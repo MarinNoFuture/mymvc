@@ -13,3 +13,5 @@ mymvc is developing
 通过composer集成了炫酷的错误异常组件whoops，symfony_dumper的打印组件，轻量级orm组件medoo，模板引擎twig
 ### 框架配置组件yaml
 框架的所有配置文件都以yaml文件，yaml相对于传统的php数组存储配置或者ini文件存储，更具有易读性，并且可以互相引用。
+###install
+部署后给log目录赋予777权限
