@@ -7,7 +7,6 @@ Class UserModel extends BaseModel
 {
     public function getUsers()
     {
-        $data = [];
         if(is_callable([$this->model,'query']) && $this->config['drive'] != 'medoo')
         {
           $res = $this->model->query('select * from users;');
