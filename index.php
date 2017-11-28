@@ -6,6 +6,7 @@ define('BASEDIR',__DIR__);
 define('CONFIGDIR', __DIR__.'/src/config');
 define('APPDIR', __DIR__.'/src/App');
 define('DEV',true);
+date_default_timezone_set('PRC');
 if(DEV == true)
 {
 	$whoops = new \Whoops\Run;
