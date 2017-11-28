@@ -17,6 +17,7 @@ mymvc is developing
 部署后给log目录赋予777权限
 
 ### nginx conf
+<pre>
 server {
         listen       80;
         server_name  www.mymvc.com mymvc.com;
@@ -36,3 +37,4 @@ server {
             include        fastcgi_params;
         }
 }
+</pre>
